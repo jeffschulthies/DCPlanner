@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.gwu.finalproject</groupId>
+    <artifactId>DCPlanner</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${maven}</version>
+            <type>maven-plugin</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wikidata.wdtk</groupId>
+            <artifactId>wdtk-dumpfiles</artifactId>
+            <version>${wikidata}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wikidata.wdtk</groupId>
+            <artifactId>wdtk-datamodel</artifactId>
+            <version>${wikidata}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wikidata.wdtk</groupId>
+            <artifactId>wdtk-rdf</artifactId>
+            <version>${wikidata}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wikidata.wdtk</groupId>
+            <artifactId>wdtk-storage</artifactId>
+            <version>${wikidata}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wikidata.wdtk</groupId>
+            <artifactId>wdtk-util</artifactId>
+            <version>${wikidata}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.visualization</groupId>
+            <artifactId>visualization-datasource</artifactId>
+            <version>${google}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openrdf.sesame</groupId>
+            <artifactId>sesame-runtime</artifactId>
+            <version>${openrdf}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json}</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <testng>6.1.1</testng>
+        <openrdf>2.8.1</openrdf>
+        <maven>3.3</maven>
+        <json>20141113</json>
+        <google>1.1.1</google>
+        <wikidata>0.4.0</wikidata>
+        <jacksonVersion>2.5.0</jacksonVersion>
+        <junitVersion>4.12</junitVersion>
+    </properties>
+    <build>
+        <sourceDirectory>${basedir}/src/main</sourceDirectory>
+        <testSourceDirectory>${basedir}/src/test</testSourceDirectory>
+        <outputDirectory>${basedir}/target/classes</outputDirectory>
+    </build>
+    <profiles>
+        <profile>
+            <id>test</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+        </profile>
+    </profiles>
+    <developers>
+        <developer>
+            <name>Jeff Schulthies</name>
+        </developer>
+        <developer>
+            <name>Jacob Jones</name>
+        </developer>
+        <developer>
+            <name>Jooyoon Byun</name>
+        </developer>
+        <developer>
+            <name>Shaked Rotlevi</name>
+        </developer>
+        <developer>
+            <name>Tarek Hatata</name>
+        </developer>
+        <developer>
+            <name>Zach Mumbauer</name>
+        </developer>
+
+    </developers>
+
+
+</project>
