@@ -7,6 +7,18 @@
     <groupId>org.gwu.finalproject</groupId>
     <artifactId>DCPlanner</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <repositories>
+        <repository>
+            <id>scribe-java-mvn-repo</id>
+            <url>https://raw.github.com/fernandezpablo85/scribe-java/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
@@ -15,70 +27,30 @@
             <type>maven-plugin</type>
         </dependency>
         <dependency>
-            <groupId>org.wikidata.wdtk</groupId>
-            <artifactId>wdtk-dumpfiles</artifactId>
-            <version>${wikidata}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.wikidata.wdtk</groupId>
-            <artifactId>wdtk-datamodel</artifactId>
-            <version>${wikidata}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.wikidata.wdtk</groupId>
-            <artifactId>wdtk-rdf</artifactId>
-            <version>${wikidata}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.wikidata.wdtk</groupId>
-            <artifactId>wdtk-storage</artifactId>
-            <version>${wikidata}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wikidata.wdtk</groupId>
-            <artifactId>wdtk-util</artifactId>
-            <version>${wikidata}</version>
-        </dependency>
-        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.visualization</groupId>
-            <artifactId>visualization-datasource</artifactId>
-            <version>${google}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openrdf.sesame</groupId>
-            <artifactId>sesame-runtime</artifactId>
-            <version>${openrdf}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${json}</version>
+            <groupId>org.scribe</groupId>
+            <artifactId>scribe</artifactId>
+            <version>1.3.6</version>
         </dependency>
     </dependencies>
+
     <properties>
         <testng>6.1.1</testng>
-        <openrdf>2.8.1</openrdf>
+        <scribe>1.3.6</scribe>
         <maven>3.3</maven>
-        <json>20141113</json>
-        <google>1.1.1</google>
-        <wikidata>0.4.0</wikidata>
-        <jacksonVersion>2.5.0</jacksonVersion>
-        <junitVersion>4.12</junitVersion>
     </properties>
+
     <build>
         <sourceDirectory>${basedir}/src/main</sourceDirectory>
         <testSourceDirectory>${basedir}/src/test</testSourceDirectory>
         <outputDirectory>${basedir}/target/classes</outputDirectory>
     </build>
+
     <profiles>
         <profile>
             <id>test</id>
@@ -88,6 +60,7 @@
             </activation>
         </profile>
     </profiles>
+
     <developers>
         <developer>
             <name>Jeff Schulthies</name>

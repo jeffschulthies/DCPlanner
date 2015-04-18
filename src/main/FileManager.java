@@ -6,8 +6,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import location.Activity;
-import location.Restaurant;
+import location.types.Activity;
+import location.types.Restaurant;
 import user.RegUser;
 
 public class FileManager implements Serializable
