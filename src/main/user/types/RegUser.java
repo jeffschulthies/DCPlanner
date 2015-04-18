@@ -1,6 +1,6 @@
-package user;
+package user.types;
 import itinerary.Itinerary;
-import user.types.User;
+import user.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;

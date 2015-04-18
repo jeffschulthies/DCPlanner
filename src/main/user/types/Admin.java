@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import location.types.Activity;
 import location.types.Restaurant;
-import user.RegUser;
+import user.User;
 
 public class Admin extends User implements AdminInterface, Serializable
 {

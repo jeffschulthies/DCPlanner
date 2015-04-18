@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import location.types.Activity;
 import location.types.Restaurant;
-import user.RegUser;
 
 public interface AdminInterface 
 {

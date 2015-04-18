@@ -1,4 +1,4 @@
-package user;
+package user.types;
 import itinerary.Itinerary;
 
 public interface RegUserInterface 

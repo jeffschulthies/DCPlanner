@@ -11,7 +11,6 @@ public class Restaurant extends Location implements Serializable
 	private String type;
 	private int priceRange;
 
-	//Jeff: Removed genre
 	public Restaurant(String name, String address, long id, String description,
 					  BufferedImage image, int openHour, int closeHour, String type,
 					  int priceRange)

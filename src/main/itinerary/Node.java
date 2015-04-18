@@ -3,10 +3,10 @@ import java.io.Serializable;
 
 import location.Location;
 
-public class Node implements NodeInterface, Serializable
+public class Node implements Serializable
 {
 
-	private Location data;
+	private Object data;
 	private Node next;
 	
 	public Node()
@@ -15,7 +15,7 @@ public class Node implements NodeInterface, Serializable
 		this.next = null;
 	}
 	
-	public Location getData()
+	public Object getData()
 	{
 		return this.data;
 	}

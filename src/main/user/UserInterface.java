@@ -1,4 +1,4 @@
-package user.types;
+package user;
 public interface UserInterface 
 {
 

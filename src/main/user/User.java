@@ -1,4 +1,4 @@
-package user.types;
+package user;
 import java.io.Serializable;
 
 public class User implements UserInterface, Serializable

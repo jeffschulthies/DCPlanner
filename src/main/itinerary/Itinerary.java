@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 import location.Location;
 
-public class Itinerary implements ItineraryInterface, Serializable
+public class Itinerary implements Serializable
 {
 
 	private Node first;
@@ -12,7 +12,8 @@ public class Itinerary implements ItineraryInterface, Serializable
 	{
 		this.first = null;
 	}
-	
+
+	//TODO Add support for all objects
 	public Node getFirstNode()
 	{
 		if (this.first == null)
@@ -22,7 +23,7 @@ public class Itinerary implements ItineraryInterface, Serializable
 		}
 		return this.first;
 	}
-	
+
 	public Location getFirst()
 	{
 		if (this.first == null)
@@ -32,7 +33,7 @@ public class Itinerary implements ItineraryInterface, Serializable
 		}
 		return this.first.getData();
 	}
-	
+
 	public void addFirst(Location newLocation)
 	{
 		Node newNode = new Node();
@@ -40,7 +41,11 @@ public class Itinerary implements ItineraryInterface, Serializable
 		newNode.setNext(this.first);
 		this.first = newNode;
 	}
-	
+
+	public void addLast(Object activity) {
+
+	}
+
 	public Location removeFirst()
 	{
 		if (this.first == null)
@@ -48,14 +53,14 @@ public class Itinerary implements ItineraryInterface, Serializable
 			System.out.println("Error: First is null");
 			return null;
 		}
-		Location removeLocation = this.first.getData();
+		//Location removeLocation = this.first.getData();
 		this.first = this.first.getNext();
 		return removeLocation;
 	}
-	
+
 	public ItineraryIterator itineraryIterator()
 	{
 		return new ItineraryIterator(this);
 	}
-	
+
 }

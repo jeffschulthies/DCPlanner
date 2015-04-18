@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import location.types.Activity;
 import location.types.Restaurant;
-import user.RegUser;
+import user.types.RegUser;
 
 public class MainFrame 
 {

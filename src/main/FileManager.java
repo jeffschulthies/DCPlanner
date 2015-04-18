@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import location.types.Activity;
 import location.types.Restaurant;
-import user.RegUser;
+import user.types.RegUser;
 
 public class FileManager implements Serializable
 {
@@ -28,6 +28,8 @@ public class FileManager implements Serializable
 	}
 	
 	// TODO: Allow main.user to choose which directory serialized files are saved to.
+	// TODO: Exceptions for first run and directory creation.
+
 	public ArrayList<Activity> readActivityFiles()
 	{
 		ArrayList<Activity> activityList = new ArrayList<Activity>();
