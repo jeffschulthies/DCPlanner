@@ -33,6 +33,7 @@ public class FileManager implements Serializable
 	public ArrayList<Activity> readActivityFiles()
 	{
 		ArrayList<Activity> activityList = new ArrayList<Activity>();
+		//TODO Add organization
 		for (int i = 0; i < this.activityFileNames.length; i++)
 		{
 			try

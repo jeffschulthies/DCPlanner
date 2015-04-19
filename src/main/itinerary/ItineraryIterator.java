@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 import location.Location;
 
-public class ItineraryIterator implements ItineraryIteratorInterface, Serializable
+public class ItineraryIterator implements Serializable
 {
 
 	private Node current;
