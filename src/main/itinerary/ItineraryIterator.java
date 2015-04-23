@@ -1,22 +1,21 @@
 package itinerary;
 import java.io.Serializable;
-
 import location.Location;
 
-public class ItineraryIterator implements ItineraryIteratorInterface, Serializable
+public class ItineraryIterator implements Serializable
 {
 
 	private Node current;
 	private Node previous;
 	private Itinerary parent;
-	
+
 	public ItineraryIterator(Itinerary parent)
 	{
 		this.current = null;
 		this.previous = null;
 		this.parent = parent;
 	}
-	
+
 	public Location next()
 	{
 		if (!this.hasNext())
@@ -35,7 +34,7 @@ public class ItineraryIterator implements ItineraryIteratorInterface, Serializab
 		}
 		return this.current.getData();
 	}
-	
+
 	public boolean hasNext()
 	{
 		if ((this.current == null && this.parent.getFirst() == null) || (this.current.getNext() == null))
@@ -44,7 +43,7 @@ public class ItineraryIterator implements ItineraryIteratorInterface, Serializab
 		}
 		return true;
 	}
-	
+
 	public void remove()
 	{
 		if (this.previous == this.current)
@@ -62,7 +61,7 @@ public class ItineraryIterator implements ItineraryIteratorInterface, Serializab
 		}
 		this.current = this.previous;
 	}
-	
+
 	public void set(Location newLocation)
 	{
 		if (this.current == null)
@@ -72,7 +71,7 @@ public class ItineraryIterator implements ItineraryIteratorInterface, Serializab
 		}
 		this.current.setData(newLocation);
 	}
-	
+
 	public void add(Location newLocation)
 	{
 		if (this.current == null)
@@ -90,5 +89,5 @@ public class ItineraryIterator implements ItineraryIteratorInterface, Serializab
 		}
 		this.previous = this.current;
 	}
-	
+
 }

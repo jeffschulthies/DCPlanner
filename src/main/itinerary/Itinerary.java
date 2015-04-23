@@ -1,19 +1,17 @@
 package itinerary;
 import java.io.Serializable;
-
 import location.Location;
 
 public class Itinerary implements Serializable
 {
 
 	private Node first;
-	
+
 	public Itinerary()
 	{
 		this.first = null;
 	}
 
-	//TODO Add support for all objects
 	public Node getFirstNode()
 	{
 		if (this.first == null)
@@ -42,10 +40,6 @@ public class Itinerary implements Serializable
 		this.first = newNode;
 	}
 
-	public void addLast(Object activity) {
-
-	}
-
 	public Location removeFirst()
 	{
 		if (this.first == null)
@@ -53,7 +47,7 @@ public class Itinerary implements Serializable
 			System.out.println("Error: First is null");
 			return null;
 		}
-		//Location removeLocation = this.first.getData();
+		Location removeLocation = this.first.getData();
 		this.first = this.first.getNext();
 		return removeLocation;
 	}

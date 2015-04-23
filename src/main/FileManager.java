@@ -19,9 +19,9 @@ public class FileManager implements Serializable
 
 	public FileManager()
 	{
-		File activityDirectory = new File("/data/activities/");
-		File restaurantDirectory = new File("/data/restaurants/");
-		File userDirectory = new File("/data/users/");
+		File activityDirectory = new File("data", "/activities/");
+		File restaurantDirectory = new File("data", "/restaurants/");
+		File userDirectory = new File("data", "/users/");
 		this.activityFileNames = activityDirectory.list();
 		this.restaurantFileNames = restaurantDirectory.list();
 		this.userFileNames = userDirectory.list();
@@ -37,7 +37,7 @@ public class FileManager implements Serializable
 		{
 			try
 			{
-				FileInputStream fileInput = new FileInputStream("/data/activities/" + this.activityFileNames[i]);
+				FileInputStream fileInput = new FileInputStream(new File("data", "/activities/" + this.activityFileNames[i]));
 				ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 				activityList.add((Activity)(objectInput.readObject()));
 				objectInput.close();
@@ -59,7 +59,7 @@ public class FileManager implements Serializable
 		{
 			try
 			{
-				FileInputStream fileInput = new FileInputStream("/data/restaurants/" + this.restaurantFileNames[i]);
+				FileInputStream fileInput = new FileInputStream(new File("data", "/restaurants/" + this.restaurantFileNames[i]));
 				ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 				restaurantList.add((Restaurant)(objectInput.readObject()));
 				objectInput.close();
@@ -81,7 +81,7 @@ public class FileManager implements Serializable
 		{
 			try
 			{
-				FileInputStream fileInput = new FileInputStream("/data/users/" + this.userFileNames[i]);
+				FileInputStream fileInput = new FileInputStream(new File("data", "/users/" + this.userFileNames[i]));
 				ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 				userList.add((RegUser)(objectInput.readObject()));
 				objectInput.close();
@@ -102,7 +102,7 @@ public class FileManager implements Serializable
 		{
 			try
 			{
-				FileOutputStream fileOutput = new FileOutputStream("/data/activites/" + activityList.get(i).getName() + ".data");
+				FileOutputStream fileOutput = new FileOutputStream(new File("data", "/activities/" + activityList.get(i).getName() + ".data"));
 				ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 				objectOutput.writeObject(activityList.get(i));
 				objectOutput.close();
@@ -122,7 +122,7 @@ public class FileManager implements Serializable
 		{
 			try
 			{
-				FileOutputStream fileOutput = new FileOutputStream("/data/restaurants/" + restaurantList.get(i).getName() + ".data");
+				FileOutputStream fileOutput = new FileOutputStream(new File("data", "/restaurants/" + restaurantList.get(i).getName() + ".data"));
 				ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 				objectOutput.writeObject(restaurantList.get(i));
 				objectOutput.close();
@@ -142,7 +142,7 @@ public class FileManager implements Serializable
 		{
 			try
 			{
-				FileOutputStream fileOutput = new FileOutputStream("/data/users/" + userList.get(i).getUsername() + ".data");
+				FileOutputStream fileOutput = new FileOutputStream(new File("data", "/users/" + userList.get(i).getUsername() + ".data"));
 				ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 				objectOutput.writeObject(userList.get(i));
 				objectOutput.close();
