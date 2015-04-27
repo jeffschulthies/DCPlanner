@@ -9,15 +9,19 @@ public class Location implements LocationInterface, Serializable
 	private String address;
 	private long id;
 	private String description;
+	private double longitude;
+	private double latitude;
 	private BufferedImage image;
 	private int[] hours;
 	
-	public Location(String name, String address, long id, String description, BufferedImage image, int openHour, int closeHour)
+	public Location(String name, String address, long id, String description, double longitude, double latitude, BufferedImage image, int openHour, int closeHour)
 	{
 		this.name = name;
 		this.address = address;
 		this.id = id;
 		this.description = description;
+		this.longitude = longitude;
+		this.latitude = latitude;
 		this.image = image;
 		this.hours = new int[2];
 		this.hours[0] = openHour;
@@ -62,6 +66,26 @@ public class Location implements LocationInterface, Serializable
 	public void setDescription(String description)
 	{
 		this.description = description;
+	}
+
+	public double getLongitude()
+	{
+		return this.longitude;
+	}
+
+	public void setLongitude(double longitude)
+	{
+		this.longitude = longitude;
+	}
+
+	public double getLatitude()
+	{
+		return this.latitude;
+	}
+
+	public void setLatitude(double latitude)
+	{
+		this.latitude = latitude;
 	}
 	
 	public BufferedImage getImage()

@@ -52,7 +52,6 @@ public class LoginScreen
                 }
                 else
                 {
-                    System.out.println("OK!");
                     String username = usernameField.getText();
                     String password = "";
                     char[] passwordArray = passwordField.getPassword();

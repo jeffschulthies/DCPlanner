@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import itinerary.Itinerary;
 
 public class PanelHandler
 {
@@ -44,15 +45,32 @@ public class PanelHandler
             this.mainFrame.getContentPane().add(new CreateActivityScreen(this).getMainPanel());
             this.mainFrame.setTitle("DCPlanner - Create Activity");
         }
+        else if (panelName.equals("createRestaurantPanel"))
+        {
+            this.mainFrame.getContentPane().add(new CreateRestaurantScreen(this).getMainPanel());
+            this.mainFrame.setTitle("DCPlanner - Create Restaurant");
+        }
         else if (panelName.equals("plan1Panel"))
         {
             this.mainFrame.getContentPane().add(new PlanScreen1(this).getMainPanel());
             this.mainFrame.setTitle("DCPlanner - Step One");
         }
-        else if (panelName.equals("plan2Panel"))
+        this.mainFrame.getContentPane().revalidate();
+        this.mainFrame.getContentPane().repaint();
+    }
+
+    public void pushPanel(String panelName, Itinerary currentItinerary)
+    {
+        this.mainFrame.getContentPane().removeAll();
+        if (panelName.equals("plan2Panel"))
         {
-            this.mainFrame.getContentPane().add(new PlanScreen2(this).getMainPanel());
+            this.mainFrame.getContentPane().add(new PlanScreen2(this, currentItinerary).getMainPanel());
             this.mainFrame.setTitle("DCPlanner - Step Two");
+        }
+        else if (panelName.equals("plan3Panel"))
+        {
+            this.mainFrame.getContentPane().add(new PlanScreen3(this, currentItinerary).getMainPanel());
+            this.mainFrame.setTitle("DCPlanner - Step Three");
         }
         this.mainFrame.getContentPane().revalidate();
         this.mainFrame.getContentPane().repaint();

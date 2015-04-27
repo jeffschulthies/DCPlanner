@@ -7,6 +7,8 @@ public class Node implements Serializable
 
 	private Location data;
 	private Node next;
+	private int startTime;
+	private int endTime;
 
 	public Node()
 	{
@@ -32,6 +34,26 @@ public class Node implements Serializable
 	public void setNext(Node newNode)
 	{
 		this.next = newNode;
+	}
+
+	public int getStartTime()
+	{
+		return this.startTime;
+	}
+
+	public void setStartTime(int startTime)
+	{
+		this.startTime = startTime;
+	}
+
+	public int getEndTime()
+	{
+		return this.endTime;
+	}
+
+	public void setEndTime(int endTime)
+	{
+		this.endTime = endTime;
 	}
 
 }

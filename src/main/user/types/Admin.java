@@ -7,7 +7,7 @@ import location.types.Activity;
 import location.types.Restaurant;
 import user.User;
 
-public class Admin extends User implements AdminInterface, Serializable
+public class Admin extends User implements Serializable
 {
 	
 	public Admin(String username, long userID, String password)
@@ -15,7 +15,7 @@ public class Admin extends User implements AdminInterface, Serializable
 		super(username, userID, password);
 	}
 	
-	public ArrayList<Activity> addActivity(ArrayList<Activity> activityList, String name, String address, long id, String description, BufferedImage image, int openHour, int closeHour, ArrayList<String> tags, double price)
+	/*public ArrayList<Activity> addActivity(ArrayList<Activity> activityList, String name, String address, long id, String description, BufferedImage image, int openHour, int closeHour, ArrayList<String> tags, double price)
 	{
 		Activity newActivity = new Activity(name, address, id, description, image, openHour, closeHour, tags, price);
 		activityList.add(newActivity);
@@ -27,7 +27,7 @@ public class Admin extends User implements AdminInterface, Serializable
 		Restaurant newRestaurant = new Restaurant(name, address, id, description, image, openHour, closeHour, type, priceRange);
 		restaurantList.add(newRestaurant);
 		return restaurantList;
-	}
+	}*/
 
 	public ArrayList<Activity> deleteActivity(ArrayList<Activity> activityList, long activityID)
 	{

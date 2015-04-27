@@ -1,4 +1,5 @@
 import location.types.Activity;
+import location.types.Restaurant;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +13,10 @@ public class AdminScreen
     private JButton testPlansButton;
     private JButton createActivityButton;
     private JButton printActivitiesButton;
+    private JButton createRestaurantButton;
+    private JButton printRestaurantsButton;
     private ArrayList<Activity> activityList;
+    private ArrayList<Restaurant> restaurantList;
 
     public AdminScreen(PanelHandler panels)
     {
@@ -31,6 +35,13 @@ public class AdminScreen
                 handler.pushPanel("createActivityPanel");
             }
         });
+        this.createRestaurantButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                handler.pushPanel("createRestaurantPanel");
+            }
+        });
         this.printActivitiesButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -43,6 +54,8 @@ public class AdminScreen
                     System.out.println("\tAddress: " + activityList.get(i).getAddress());
                     System.out.println("\tID: " + activityList.get(i).getID());
                     System.out.println("\tDescription: " + activityList.get(i).getDescription());
+                    System.out.println("\tLongitude: " + activityList.get(i).getLongitude());
+                    System.out.println("\tLatitude: " + activityList.get(i).getLatitude());
                     System.out.println("\tOpen: " + activityList.get(i).getOpenHour());
                     System.out.println("\tClose: " + activityList.get(i).getCloseHour());
                     System.out.println("\tTags: ");
@@ -51,6 +64,27 @@ public class AdminScreen
                         System.out.println("\t\t" + activityList.get(i).getTag(j));
                     }
                     System.out.println("\tPrice: " + activityList.get(i).getPrice());
+                    System.out.println();
+                }
+            }
+        });
+        this.printRestaurantsButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                FileManager files = new FileManager();
+                restaurantList = files.readRestaurantFiles();
+                for (int i = 0; i < restaurantList.size(); i++) {
+                    System.out.println(restaurantList.get(i).getName() + ":");
+                    System.out.println("\tAddress: " + restaurantList.get(i).getAddress());
+                    System.out.println("\tID: " + restaurantList.get(i).getID());
+                    System.out.println("\tDescription: " + restaurantList.get(i).getDescription());
+                    System.out.println("\tLongitude: " + restaurantList.get(i).getLongitude());
+                    System.out.println("\tLatitude: " + restaurantList.get(i).getLatitude());
+                    System.out.println("\tOpen: " + restaurantList.get(i).getOpenHour());
+                    System.out.println("\tClose: " + restaurantList.get(i).getCloseHour());
+                    System.out.println("\tType: " + restaurantList.get(i).getType());
+                    System.out.println("\tPrice Range: " + restaurantList.get(i).getPriceRange());
                     System.out.println();
                 }
             }

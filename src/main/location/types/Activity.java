@@ -13,10 +13,11 @@ public class Activity extends Location implements Serializable
 	private double price;
 
 	public Activity(String name, String address, long id, String description,
-					BufferedImage image, int openHour, int closeHour,
-					ArrayList<String> tags, double price)
+					double longitude, double latitude, BufferedImage image,
+					int openHour, int closeHour, ArrayList<String> tags,
+					double price)
 	{
-		super(name, address, id, description, image, openHour, closeHour);
+		super(name, address, id, description, longitude, latitude, image, openHour, closeHour);
 		this.tags = tags;
 		this.price = price;
 	}

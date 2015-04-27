@@ -12,10 +12,11 @@ public class Restaurant extends Location implements Serializable
 	private int priceRange;
 
 	public Restaurant(String name, String address, long id, String description,
-					  BufferedImage image, int openHour, int closeHour, String type,
+					  double longitude, double latitude, BufferedImage image,
+					  int openHour, int closeHour, String type,
 					  int priceRange)
 	{
-		super(name, address, id, description, image, openHour, closeHour);
+		super(name, address, id, description, longitude, latitude, image, openHour, closeHour);
 		this.type = type;
 		this.priceRange = priceRange;
 	}
@@ -26,7 +27,7 @@ public class Restaurant extends Location implements Serializable
 	{
 		return this.type;
 	}
-	
+
 	public void setType(String type)
 	{
 		this.type = type;

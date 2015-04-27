@@ -15,6 +15,8 @@ public class CreateActivityScreen
     private JLabel nameLabel;
     private JLabel addressLabel;
     private JLabel descriptionLabel;
+    private JLabel longitudeLabel;
+    private JLabel latitudeLabel;
     private JLabel openLabel;
     private JLabel closeLabel;
     private JLabel tagsLabel;
@@ -22,6 +24,8 @@ public class CreateActivityScreen
     private JTextField nameField;
     private JTextField addressField;
     private JTextField descriptionField;
+    private JTextField longitudeField;
+    private JTextField latitudeField;
     private JTextField tagsField;
     private JTextField priceField;
     private JComboBox openTime;
@@ -62,12 +66,20 @@ public class CreateActivityScreen
                 {
                     FileManager files = new FileManager();
                     activityList = files.readActivityFiles();
-                    String openTwelveHourString = (String)(openTime.getSelectedItem());
-                    String closeTwelveHourString = (String)(closeTime.getSelectedItem());
-                    int openTwelveHourInt = Integer.parseInt(openTwelveHourString.replace(":", ""));
-                    int closeTwelveHourInt = Integer.parseInt(closeTwelveHourString.replace(":", ""));
-                    Activity newActivity = new Activity(nameField.getText(), addressField.getText(), activityList.size() + 1, descriptionField.getText(), null, convertToTwentyFourHourFormat(openTwelveHourInt, (String)(openPeriod.getSelectedItem())), convertToTwentyFourHourFormat(closeTwelveHourInt, (String)(closePeriod.getSelectedItem())), currentTags, Double.parseDouble(priceField.getText()));
-                    activityList.add(newActivity);
+                    if (openTime.getSelectedItem() == closeTime.getSelectedItem() && openPeriod.getSelectedItem() == closePeriod.getSelectedItem())
+                    {
+                        Activity newActivity = new Activity(nameField.getText(), addressField.getText(), activityList.size() + 1, descriptionField.getText(), Double.parseDouble(longitudeField.getText()), Double.parseDouble(latitudeField.getText()), null, -1, -1, currentTags, Double.parseDouble(priceField.getText()));
+                        activityList.add(newActivity);
+                    }
+                    else
+                    {
+                        String openTwelveHourString = (String)(openTime.getSelectedItem());
+                        String closeTwelveHourString = (String)(closeTime.getSelectedItem());
+                        int openTwelveHourInt = Integer.parseInt(openTwelveHourString.replace(":", ""));
+                        int closeTwelveHourInt = Integer.parseInt(closeTwelveHourString.replace(":", ""));
+                        Activity newActivity = new Activity(nameField.getText(), addressField.getText(), activityList.size() + 1, descriptionField.getText(), Double.parseDouble(longitudeField.getText()), Double.parseDouble(latitudeField.getText()), null, convertToTwentyFourHourFormat(openTwelveHourInt, (String)(openPeriod.getSelectedItem())), convertToTwentyFourHourFormat(closeTwelveHourInt, (String)(closePeriod.getSelectedItem())), currentTags, Double.parseDouble(priceField.getText()));
+                        activityList.add(newActivity);
+                    }
                     files.writeActivityFiles(activityList);
                     handler.pushPanel("adminPanel");
                 }
@@ -82,7 +94,7 @@ public class CreateActivityScreen
 
     private int convertToTwentyFourHourFormat(int twelveHourFormat, String twelveHourPeriod)
     {
-        if (twelveHourPeriod.equals("AM"))
+        if (twelveHourPeriod.equals("AM") || (twelveHourFormat == 1200 && twelveHourPeriod.equals("PM")))
         {
             return twelveHourFormat;
         }

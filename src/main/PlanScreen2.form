@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="PlanScreen2">
-  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="9" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="17" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="545" height="400"/>
+      <xy x="20" y="20" width="545" height="704"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
       <component id="8d421" class="javax.swing.JLabel" binding="titleLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Chalkboard" size="20" style="1"/>
-          <text value="Schedule A Dining Experience!"/>
+          <text value="Schedule a dining experience!"/>
         </properties>
       </component>
       <component id="66602" class="javax.swing.JLabel" binding="mealOneLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Meal One:"/>
@@ -27,7 +27,7 @@
       </component>
       <component id="e17a3" class="javax.swing.JLabel" binding="mealTwoLabel">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Meal Two:"/>
@@ -35,7 +35,7 @@
       </component>
       <component id="bfa1" class="javax.swing.JButton" binding="continueButton" default-binding="true">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="15" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -45,7 +45,7 @@
       </component>
       <component id="6af7f" class="javax.swing.JCheckBox" binding="enableTwoCheckBox">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Enable"/>
@@ -53,7 +53,7 @@
       </component>
       <component id="98328" class="javax.swing.JCheckBox" binding="enableOneCheckBox">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Enable"/>
@@ -61,7 +61,7 @@
       </component>
       <component id="a3760" class="javax.swing.JCheckBox" binding="enableThreeCheckBox">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Enable"/>
@@ -69,31 +69,31 @@
       </component>
       <component id="b17a4" class="javax.swing.JLabel" binding="mealThreeLabel">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Meal Three:"/>
         </properties>
       </component>
-      <component id="1db95" class="javax.swing.JLabel">
+      <component id="1db95" class="javax.swing.JLabel" binding="startTimeOneLabel">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Start Time:"/>
         </properties>
       </component>
-      <component id="d22ce" class="javax.swing.JLabel">
+      <component id="d22ce" class="javax.swing.JLabel" binding="startTimeTwoLabel">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Start Time:"/>
         </properties>
       </component>
-      <component id="7d704" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="7d704" class="javax.swing.JComboBox" binding="mealOneTime">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <model>
@@ -124,9 +124,9 @@
           </model>
         </properties>
       </component>
-      <component id="81ed1" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+      <component id="81ed1" class="javax.swing.JComboBox" binding="mealTwoTime">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <model>
@@ -157,9 +157,9 @@
           </model>
         </properties>
       </component>
-      <component id="abc64" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+      <component id="abc64" class="javax.swing.JComboBox" binding="mealThreeTime">
         <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="13" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <model>
@@ -190,17 +190,17 @@
           </model>
         </properties>
       </component>
-      <component id="61d42" class="javax.swing.JLabel">
+      <component id="61d42" class="javax.swing.JLabel" binding="startTimeThreeLabel">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Start Time:"/>
         </properties>
       </component>
-      <component id="46f7b" class="javax.swing.JComboBox" binding="comboBox4" default-binding="true">
+      <component id="46f7b" class="javax.swing.JComboBox" binding="mealOnePeriod">
         <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <model>
@@ -209,9 +209,9 @@
           </model>
         </properties>
       </component>
-      <component id="8d4ca" class="javax.swing.JComboBox" binding="comboBox5" default-binding="true">
+      <component id="8d4ca" class="javax.swing.JComboBox" binding="mealTwoPeriod">
         <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <model>
@@ -220,9 +220,9 @@
           </model>
         </properties>
       </component>
-      <component id="a533d" class="javax.swing.JComboBox" binding="comboBox6" default-binding="true">
+      <component id="a533d" class="javax.swing.JComboBox" binding="mealThreePeriod">
         <constraints>
-          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="13" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <model>
@@ -233,9 +233,72 @@
       </component>
       <vspacer id="c7a9e">
         <constraints>
-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="16" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
+      <vspacer id="8df11">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="40"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="574b4">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="80"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="5fee0">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="40"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="68cff">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="60"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="a9aa">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="40"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="ed6e3">
+        <constraints>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="60"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="68922">
+        <constraints>
+          <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="40"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="2efae">
+        <constraints>
+          <grid row="14" column="3" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="80"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <hspacer id="efd67">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="40" height="-1"/>
+          </grid>
+        </constraints>
+      </hspacer>
     </children>
   </grid>
 </form>
