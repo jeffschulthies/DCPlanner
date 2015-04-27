@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+//Activity - Monuments etc.
 public class Activity extends Location implements Serializable
 {
 	
