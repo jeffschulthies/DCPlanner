@@ -1,4 +1,4 @@
-/*package location.types.helper;
+package location.types.helper;
 
 import location.Location;
 import location.types.Activity;
@@ -17,18 +17,22 @@ public class DefaultLandmarks {
         ArrayList<String> defaultTags = createDefaultTags();
         BufferedImage[] images = createDefaultImages();
 
-        Activity loc1 = new Activity("United States Capitol", "East Capitol St NE & First St SE, Washington, DC 20004",
+        // Add activities via this file using the following format.
+        // Write the code, commit, and we'll take care of the rest.
+        // Reference the Activity class to see what the parameters should be if you must.
+        // ALSO USE THE GUI IF YOU CAN!!!!!
+        /*Activity loc1 = new Activity("United States Capitol", "East Capitol St NE & First St SE, Washington, DC 20004",
                 1, "The United States Capitol, atop Capitol Hill at the eastern end of the National Mall in Washington, D.C.," +
                 " is the seat of the United States Congress, the legislative branch of the U.S. federal government, completed in the year 1800." +
                 " Though not at the geographic center of the Federal District, the Capitol forms the basis for the District's street-numbering system." +
-                " It is the origin point at which the District's four quadrants meet, and around which the city was laid out.",
-                images[0], 0, 24, defaultTags, 0 );
+                " It is the origin point at which the District's four quadrants meet, and around which the city was laid out.", LONGITUDE HERE, LATITUDE HERE,
+                null, 0, 2400, defaultTags, 0 );
         Activity loc2 = new Activity("National Mall", "Washington, DC", 2, "The National Mall is a national park in downtown Washington, D.C., the capital of the United States." +
-                " The National Park Service administers the National Mall, which is part of its National Mall and Memorial Parks unit.",
-                images[1], 0, 24, defaultTags, 0);
+                " The National Park Service administers the National Mall, which is part of its National Mall and Memorial Parks unit.", LONGITUDE HERE, LATITUDE HERE,
+                null, 0, 2400, defaultTags, 0);
 
         locations.add(loc1);
-        locations.add(loc2);
+        locations.add(loc2);*/
 
         return locations;
     }
@@ -66,4 +70,4 @@ public class DefaultLandmarks {
     }
 
     //("United States Capitol","East Capitol St NE & First St SE, Washington, DC 20004" )
-}*/
+}
