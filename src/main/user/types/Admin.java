@@ -7,7 +7,7 @@ import location.types.Activity;
 import location.types.Restaurant;
 import user.User;
 
-public class Admin extends User implements AdminInterface, Serializable
+public class Admin extends User implements Serializable
 {
 	
 	public Admin(String username, long userID, String password)

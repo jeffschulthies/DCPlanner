@@ -22,7 +22,6 @@ public class FileManager implements Serializable
 		File activityDirectory = new File("data", "/activities/");
 		File restaurantDirectory = new File("data", "/restaurants/");
 		File userDirectory = new File("data", "/users/");
-		writeActivityFiles(location.types.helper.DefaultLandmarks.createLandmarks());
 		this.activityFileNames = activityDirectory.list();
 		this.restaurantFileNames = restaurantDirectory.list();
 		this.userFileNames = userDirectory.list();

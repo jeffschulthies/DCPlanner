@@ -61,6 +61,7 @@ public class DefaultLandmarks {
         } catch (IOException e) {
             System.out.println("Error loading img");
         }
+        //TODO Add [2] [3] etc.
         BufferedImage[] images = new BufferedImage[2];
         images[0] = img;
         images[1] = img2;
