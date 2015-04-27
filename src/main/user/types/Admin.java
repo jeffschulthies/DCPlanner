@@ -59,17 +59,53 @@ public class Admin extends User implements Serializable
 		userList.add(newUser);
 		return userList;
 	}
-	
+
 	public ArrayList<RegUser> deleteUser(ArrayList<RegUser> userList, long userID)
 	{
-		for (int i = 0; i < userList.size(); i++)
-		{
-			if (userList.get(i).getUserID() == userID)
-			{
-				userList.remove(i);
-			}
+		int lo = 0;
+		int hi  = userList.size() - 1;
+		int mid = (lo + hi) / 2;
+
+		if(userList.get(mid).getUserID() == userID) {
+			userList.remove(mid);
+			return userList;
+		} else if(lo >= hi) {
+			System.out.println("User not found");
+			return userList;
 		}
+
+		if(userID > userList.get(mid).getUserID()) {
+			userList = deleteUser(userList, userID, lo, mid - 1);
+		}
+		else {
+			userList = deleteUser(userList, userID, mid + 1, hi);
+		}
+
 		return userList;
 	}
+
+	//Recursive deleteUser
+	public ArrayList<RegUser> deleteUser(ArrayList<RegUser> userList, long userID, int lo, int hi)
+	{
+		int mid = (lo + hi) / 2;
+
+		if(userList.get(mid).getUserID() == userID) {
+			userList.remove(mid);
+			return userList;
+		} else if(lo >= hi) {
+			System.out.println("User not found");
+			return userList;
+		}
+
+		if(userID > userList.get(mid).getUserID()) {
+			deleteUser(userList, userID, lo, mid - 1);
+		} else {
+			deleteUser(userList, userID, mid, hi);
+		}
+
+		return userList;
+
+	}
+
 
 }

@@ -1,0 +1,287 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+class GUI 
+{
+   public static void main(String[] args) 
+   {
+      Event main = new Event("Event");
+      JFrame frame=new JFrame("Plan your trip!");
+      frame.setLocation(500,400);
+      
+      Container contentPane = frame.getContentPane();
+      JPanel panel=new JPanel();
+      panel.setLayout(new GridLayout(3,2));
+      
+      JTextField text1=new JTextField();
+      JTextField text2=new JTextField();
+      JTextField text3=new JTextField();
+      
+      JLabel label=new JLabel();
+      
+      panel.add(new JLabel("Start Time"));
+      panel.add(text1);
+      panel.add(new JLabel("End Time"));
+      panel.add(text2);
+      panel.add(new JLabel("Activity"));
+      panel.add(text3);
+      
+      contentPane.add(panel,BorderLayout.CENTER);
+      contentPane.add(label, BorderLayout.NORTH);        
+      JButton btn =new JButton("Enter");
+      contentPane.add(btn,BorderLayout.SOUTH);
+      
+      ActionListener listener = new One(text1,text2,text3,label);
+      btn.addActionListener(listener);
+      
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.pack();
+   
+      Frame f = new Frame("Plan your trip!");
+      f.setSize(430,380);
+      f.setLayout(null);
+      
+      Label startTime = new Label("Start Time: ");
+      startTime.setBounds(100,100,80,80);
+      f.add(startTime);
+      
+      Label endTime = new Label("End Time: ");
+      endTime.setBounds(100,150,80,80);
+      f.add(endTime);
+      
+      Label activity = new Label("Activity Preferences: ");
+      activity.setBounds(100,210,130,70);
+      f.add(activity);
+      
+      Choice startTimeChoice = new Choice();
+      startTimeChoice.add("07:00 AM");
+      startTimeChoice.add("07:30 AM");
+      startTimeChoice.add("08:00 AM");
+      startTimeChoice.add("08:30 AM");
+      startTimeChoice.add("09:00 AM");
+      startTimeChoice.add("09:30 AM");
+      startTimeChoice.add("10:00 AM");
+      startTimeChoice.add("10:30 AM");
+      startTimeChoice.add("11:00 AM");
+      startTimeChoice.add("11:30 AM");
+      startTimeChoice.add("12:00 PM");
+      startTimeChoice.add("12:30 PM");
+      startTimeChoice.add("01:00 PM");
+      startTimeChoice.add("01:30 PM");
+      startTimeChoice.add("02:00 PM");
+      startTimeChoice.add("02:30 PM");
+      startTimeChoice.add("03:00 PM");
+      startTimeChoice.add("03:30 PM");
+      startTimeChoice.add("04:00 PM");
+      startTimeChoice.add("04:30 PM");
+      startTimeChoice.add("05:00 PM");
+      startTimeChoice.add("05:30 PM");
+      startTimeChoice.add("06:00 PM");
+      startTimeChoice.add("06:30 PM");
+      startTimeChoice.add("07:00 PM");
+      startTimeChoice.setSize(100,50);
+      startTimeChoice.setLocation(180,128);
+      f.add(startTimeChoice);
+      
+      Choice endTimeChoice = new Choice();
+      endTimeChoice.add("07:00 AM");
+      endTimeChoice.add("07:30 AM");
+      endTimeChoice.add("08:00 AM");
+      endTimeChoice.add("08:30 AM");
+      endTimeChoice.add("09:00 AM");
+      endTimeChoice.add("09:30 AM");
+      endTimeChoice.add("10:00 AM");
+      endTimeChoice.add("10:30 AM");
+      endTimeChoice.add("11:00 AM");
+      endTimeChoice.add("11:30 AM");
+      endTimeChoice.add("12:00 PM");
+      endTimeChoice.add("12:30 PM");
+      endTimeChoice.add("01:00 PM");
+      endTimeChoice.add("01:30 PM");
+      endTimeChoice.add("02:00 PM");
+      endTimeChoice.add("02:30 PM");
+      endTimeChoice.add("03:00 PM");
+      endTimeChoice.add("03:30 PM");
+      endTimeChoice.add("04:00 PM");
+      endTimeChoice.add("04:30 PM");
+      endTimeChoice.add("05:00 PM");
+      endTimeChoice.add("05:30 PM");
+      endTimeChoice.add("06:00 PM");
+      endTimeChoice.add("06:30 PM");
+      endTimeChoice.add("07:00 PM");
+      endTimeChoice.setSize(100,50);
+      endTimeChoice.setLocation(180,177);
+      f.add(endTimeChoice);
+
+      Choice option = new Choice();
+      option.add("Museums");
+      option.add("Parks");
+      option.add("Monuments");
+      option.add("Landmarks");
+      option.add("Theaters");
+      option.add("Schools");
+      option.add("Other");
+      option.setSize(100,50);
+      option.setLocation(230,235);
+      f.add(option);
+      
+      Button list = new Button("List");
+      list.setSize(430, 50);
+      list.setLocation(0, 30);
+      f.add(list);
+      
+      f.setVisible(true);
+      frame.setVisible(true);
+   }
+
+}
+
+class One implements ActionListener
+{
+
+   JTextField text1,text2,text3;
+   JLabel label;
+   One(JTextField text1,JTextField text2,JTextField text3,JLabel label)
+   {
+      this.text1 = text1;
+      this.text2 = text2;
+      this.text3 = text3;
+      this.label = label;
+   }
+   public void actionPerformed(ActionEvent e) 
+   {
+      String time1 = text1.getText();
+      String time2 = text2.getText();
+      String activity = text3.getText();
+      label.setText("Start time = " + time1 + "   End time = " + time2 + "   " + activity + " is great place to visit! Enjoy your trip!");
+   }
+}
+
+class Event extends Frame
+{
+   Button first, prev, next, last;
+   Panel buttons;
+   Panel slide;
+   Panel slide1, slide2, slide3, slide4, slide5, slide6;
+   CardLayout card;
+   
+   
+   Event(String title)
+   {
+      super(title);
+      
+      slide = new Panel();
+      card = new CardLayout();
+      slide.setLayout(card);
+      
+      buttons = new Panel();
+      buttons.setLayout(new FlowLayout());
+      
+      first = new Button("<<");
+      prev = new Button("<");
+      next = new Button(">");
+      last = new Button(">>");
+      
+      buttons.add(first);
+      buttons.add(prev);
+      buttons.add(next);
+      buttons.add(last);
+      
+      first.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {
+            card.first(slide);
+         }
+      });
+      
+      prev.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {
+            card.previous(slide);
+         }
+      });
+      
+      next.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {
+            card.next(slide);
+         }
+      });
+      
+      last.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {
+            card.last(slide);
+         }
+      });
+
+      slide1 = new Panel();
+      slide1.setBackground(Color.white);
+      slide1.add(new Label("Museums"));
+      Label timeslot1 = new Label("                                                     Time Slot: 07 AM - 09 AM");
+      slide1.add(timeslot1);
+      Label location1 = new Label("                                                        Location: Constitution Ave.");
+      slide1.add(location1);
+      
+      slide2 = new Panel();
+      slide2.setBackground(Color.white);
+      slide2.add(new Label("Parks"));
+      Label timeslot2 = new Label("                                                             Time Slot: 10 AM - 12 PM");
+      slide2.add(timeslot2);
+      Label location2 = new Label("                                                                        Location: New Hampshire Ave.");
+      slide2.add(location2);
+      
+      slide3 = new Panel();
+      slide3.setBackground(Color.white);
+      slide3.add(new Label("Monuments"));
+      Label timeslot3 = new Label("                                                     Time Slot: 01 PM - 03 PM");
+      slide3.add(timeslot3);
+      Label location3 = new Label("                                                  Location: 20th Ave. NW");
+      slide3.add(location3);
+
+      slide4 = new Panel();
+      slide4.setBackground(Color.white);
+      slide4.add(new Label("Landmarks"));
+      Label timeslot4 = new Label("                                                     Time Slot: 04 PM - 06 PM");
+      slide4.add(timeslot4);
+      Label location4 = new Label("                                                  Location: 15th Ave. NW");
+      slide4.add(location4);
+
+      slide5 = new Panel();
+      slide5.setBackground(Color.white);
+      slide5.add(new Label("Theaters"));
+      Label timeslot5 = new Label("                                                       Time Slot: 11 AM - 01 PM");
+      slide5.add(timeslot5);
+      Label location5 = new Label("                                                          Location: Washington Ave.");
+      slide5.add(location5);
+      
+      slide6 = new Panel();
+      slide6.setBackground(Color.white);
+      slide6.add(new Label("Schools"));
+      Label timeslot6 = new Label("                                                         Time Slot: 10 AM - 11 AM");
+      slide6.add(timeslot6);
+      Label location6 = new Label("                                                            Location: Connecticut Ave.");
+      slide6.add(location6);
+
+      slide.add(slide1, "1");
+      slide.add(slide2, "2");
+      slide.add(slide3, "3");
+      slide.add(slide4, "4");
+      slide.add(slide5, "5");
+      slide.add(slide6, "6");
+      
+      add("South", buttons);
+      add("Center", slide);
+      
+      setSize(400, 400);
+      setLocation(200, 200);
+      setVisible(true);
+      
+      card.show(slide, "1");
+   }
+}

@@ -35,6 +35,9 @@ public class RegisterScreen
         {
             public void actionPerformed(ActionEvent e)
             {
+
+                //TODO USE THE CLASSES WE CREATED!
+                //TODO in the main RETRIEVE USERS THEN SAVE TO PRIVATE ARRAY.
                 String username = usernameField.getText();
                 String password = "";
                 char[] passwordArray = passwordField.getPassword();

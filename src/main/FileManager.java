@@ -26,7 +26,7 @@ public class FileManager implements Serializable
 		this.restaurantFileNames = restaurantDirectory.list();
 		this.userFileNames = userDirectory.list();
 	}
-	
+
 	// TODO: Allow main.user to choose which directory serialized files are saved to.
 	// TODO: Exceptions for first run and directory creation.
 
@@ -95,7 +95,7 @@ public class FileManager implements Serializable
 		}
 		return userList;
 	}
-	
+
 	public void writeActivityFiles(ArrayList<Activity> activityList)
 	{
 		for (int i = 0; i < activityList.size(); i++)
