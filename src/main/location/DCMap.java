@@ -6,6 +6,6 @@ package location;
  */
 public class DCMap {
     //253440
-    private char[][] map;
-    for(int i = 0; i <)
+/*    private char[][] map;
+    for(int i = 0; i <) */
 }
