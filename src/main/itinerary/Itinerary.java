@@ -43,11 +43,13 @@ public class Itinerary implements Serializable
 		return this.first.getData();
 	}
 
-	public void addFirst(Location newLocation)
+	public void addFirst(Location newLocation, int startTime, int endTime)
 	{
 		Node newNode = new Node();
 		newNode.setData(newLocation);
 		newNode.setNext(this.first);
+		newNode.setStartTime(startTime);
+		newNode.setEndTime(endTime);
 		this.first = newNode;
 	}
 

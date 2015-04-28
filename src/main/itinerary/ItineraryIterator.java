@@ -37,11 +37,14 @@ public class ItineraryIterator implements Serializable
 
 	public boolean hasNext()
 	{
-		if ((this.current == null && this.parent.getFirst() == null) || (this.current.getNext() == null))
+		if (this.current == null)
 		{
-			return false;
+			return this.parent.getFirstNode() != null;
 		}
-		return true;
+		else
+		{
+			return this.current.getNext() != null;
+		}
 	}
 
 	public void remove()
@@ -72,11 +75,11 @@ public class ItineraryIterator implements Serializable
 		this.current.setData(newLocation);
 	}
 
-	public void add(Location newLocation)
+	public void add(Location newLocation, int startTime, int endTime)
 	{
 		if (this.current == null)
 		{
-			this.parent.addFirst(newLocation);
+			this.parent.addFirst(newLocation, startTime, endTime);
 			this.current = this.parent.getFirstNode();
 		}
 		else
@@ -84,6 +87,8 @@ public class ItineraryIterator implements Serializable
 			Node newNode = new Node();
 			newNode.setData(newLocation);
 			newNode.setNext(this.current.getNext());
+			newNode.setStartTime(startTime);
+			newNode.setEndTime(endTime);
 			this.current.setNext(newNode);
 			this.current = newNode;
 		}

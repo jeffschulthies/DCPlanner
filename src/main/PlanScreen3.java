@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import itinerary.Itinerary;
+import itinerary.ItineraryIterator;
+import itinerary.Node;
 import location.types.Activity;
 
 public class PlanScreen3
@@ -55,6 +57,35 @@ public class PlanScreen3
                 }
             }
         });
+        this.addButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                if (currentTime == currentItinerary.getTripStartTime())
+                {
+                    currentItinerary.addFirst(potentialActivityList.get(currentActivityIndex), currentTime, currentTime + generateActivityLength());
+                }
+                else
+                {
+                    ItineraryIterator iter = currentItinerary.itineraryIterator();
+                    while (iter.hasNext())
+                    {
+                        iter.next();
+                    }
+                    iter.add(potentialActivityList.get(currentActivityIndex), currentTime, currentTime + generateActivityLength());
+                }
+                currentTime = currentTime + generateActivityLength();
+                if (currentTime >= currentItinerary.getTripEndTime())
+                {
+
+                }
+                else
+                {
+                    parseActivities();
+                    setLabels();
+                }
+            }
+        });
     }
 
     public JPanel getMainPanel()
@@ -68,6 +99,19 @@ public class PlanScreen3
         this.insertAddressLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getAddress());
         this.insertDescriptionLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getDescription());
         this.insertPriceLabel.setText(Double.toString(this.potentialActivityList.get(this.currentActivityIndex).getPrice()));
+    }
+
+    public int generateActivityLength()
+    {
+        if (this.currentItinerary.getTripEndTime() - this.currentTime < 200)
+        {
+            return this.currentItinerary.getTripEndTime() - this.currentTime;
+        }
+        else if (this.currentItinerary.getTripEndTime() - this.currentTime > 400)
+        {
+            return 200;
+        }
+        return 100;
     }
 
     public void parseActivities()
