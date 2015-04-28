@@ -20,14 +20,22 @@ public class StartScreen
         {
             public void actionPerformed(ActionEvent e)
             {
-                handler.pushPanel("loginPanel");
+                try {
+                    handler.pushPanel("loginPanel");
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         });
         this.registerButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                handler.pushPanel("registerPanel");
+                try {
+                    handler.pushPanel("registerPanel");
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }
