@@ -8,6 +8,10 @@ public class PlanScreen3
 
     private PanelHandler handler;
     private JPanel mainPanel;
+    private JButton previousButton;
+    private JButton nextButton;
+    private JButton addButton;
+    private JPanel activityPanel;
     private Itinerary currentItinerary;
     private ArrayList<Activity> potentialActivityList;
 
