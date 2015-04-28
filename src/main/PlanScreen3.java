@@ -77,7 +77,7 @@ public class PlanScreen3
                 currentTime = currentTime + generateActivityLength();
                 if (currentTime >= currentItinerary.getTripEndTime())
                 {
-
+                    handler.pushPanel("plan4Panel", currentItinerary);
                 }
                 else
                 {
@@ -97,7 +97,15 @@ public class PlanScreen3
     {
         this.insertNameLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getName());
         this.insertAddressLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getAddress());
-        this.insertDescriptionLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getDescription());
+        if (this.potentialActivityList.get(this.currentActivityIndex).getDescription().length() >= 150)
+        {
+            String abridgedDescription = this.potentialActivityList.get(this.currentActivityIndex).getDescription().substring(0, 147) + "...";
+            this.insertDescriptionLabel.setText(abridgedDescription);
+        }
+        else
+        {
+            this.insertDescriptionLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getDescription());
+        }
         this.insertPriceLabel.setText(Double.toString(this.potentialActivityList.get(this.currentActivityIndex).getPrice()));
     }
 

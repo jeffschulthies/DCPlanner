@@ -41,7 +41,7 @@ public class LoginScreen
                 if (!adminCheckBox.isSelected())
                 {
                     try {
-                        handler.pushPanel("PlanScreen1");
+                        handler.pushPanel("plan1Panel");
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }

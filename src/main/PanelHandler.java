@@ -71,6 +71,11 @@ public class PanelHandler
             this.mainFrame.getContentPane().add(new PlanScreen3(this, currentItinerary).getMainPanel());
             this.mainFrame.setTitle("DCPlanner - Step Three");
         }
+        else if (panelName.equals("plan4Panel"))
+        {
+            this.mainFrame.getContentPane().add(new PlanScreen4(this, currentItinerary).getMainPanel());
+            this.mainFrame.setTitle("DCPlanner - Finish");
+        }
         this.mainFrame.getContentPane().revalidate();
         this.mainFrame.getContentPane().repaint();
     }
