@@ -88,6 +88,10 @@ public class PlanScreen3
             {
                 fitsUserPrefs = false;
             }
+            if ((this.currentTime < this.potentialActivityList.get(i).getOpenHour() || this.currentTime > this.potentialActivityList.get(i).getCloseHour()) && (this.potentialActivityList.get(i).getOpenHour() != -1 && this.potentialActivityList.get(i).getCloseHour() != -1))
+            {
+                fitsUserPrefs = false;
+            }
             if (!fitsUserPrefs)
             {
                 this.potentialActivityList.remove(i);
