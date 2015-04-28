@@ -30,59 +30,48 @@ public class RegisterScreen
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("startPanel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("startPanel");
             }
         });
         this.registerButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-
-                //TODO USE THE CLASSES WE CREATED!
-                //TODO in the main RETRIEVE USERS THEN SAVE TO PRIVATE ARRAY.
-                String username = usernameField.getText();
-                String password = "";
-                char[] passwordArray = passwordField.getPassword();
-                for (int i = 0; i < passwordArray.length; i++)
+                String enteredUsername = usernameField.getText();
+                String enteredPassword = "";
+                char[] enteredPasswordArray = passwordField.getPassword();
+                for (int i = 0; i < enteredPasswordArray.length; i++)
                 {
-                    password = password + passwordArray[i];
+                    enteredPassword = enteredPassword + enteredPasswordArray[i];
                 }
-
-                FileManager files = null;
-                try {
-                    files = new FileManager();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+                String verifiedPassword = "";
+                char[] verifiedPasswordArray = verifyPasswordField.getPassword();
+                for (int i = 0; i < verifiedPasswordArray.length; i++)
+                {
+                    verifiedPassword = verifiedPassword + verifiedPasswordArray[i];
                 }
-                //TODO FIX USER
-                ArrayList<RegUser> userListTwo = null;
-                File regularDirectory = new File("data", "/users/regular/");
-                if(regularDirectory.list().length == 0) {
-                    RegUser newUser = new RegUser(username, 1, password);
-                    files.writeUser(newUser);
-                } else {
-                    userListTwo = files.readUserFilesTwo();
-                    System.out.println("completed");
-                    RegUser newUser = new RegUser(username, userListTwo.size() + 1, password);
-                    userListTwo.add(newUser);
-
-
-                    /*for(int i = 0; i < userListTwo.size(); i++) {
-                        System.out.println(userListTwo.get(i).getUsername());
-                    }*/
-                    //files.writeUser(newUser);
-                    files.writeUserFiles(userListTwo);
+                FileManager files = new FileManager();
+                userList = files.readUserFiles();
+                if (userList.size() == 0 && enteredPassword.equals(verifiedPassword))
+                {
+                    RegUser newUser = new RegUser(enteredUsername, userList.size() + 1, enteredPassword);
+                    userList.add(newUser);
+                    files.writeUserFiles(userList);
+                    handler.pushPanel("startPanel");
                 }
-                getMainPanel();
-                //userList = files.readUserFiles();
-                // TODO: Sort "userList" alphabetically
-                // TODO: Binary search for user object based on "username"
-                // TODO: If username already exists, return error. If passwords do not match, return error.
-                // TODO: Otherwise, create user object, add it to list, and write list to file system.
+                else if (userList.size() != 0 && enteredPassword.equals(verifiedPassword) && !usernameExists(enteredUsername))
+                {
+                    RegUser newUser = new RegUser(enteredUsername, userList.size() + 1, enteredPassword);
+                    userList.add(newUser);
+                    files.writeUserFiles(userList);
+                    handler.pushPanel("startPanel");
+                }
+                else
+                {
+                    usernameField.setText("");
+                    passwordField.setText("");
+                    verifyPasswordField.setText("");
+                }
             }
         });
     }
@@ -90,6 +79,33 @@ public class RegisterScreen
     public JPanel getMainPanel()
     {
         return this.mainPanel;
+    }
+
+    public boolean usernameExists(String username)
+    {
+        int low = 0;
+        int high = userList.size() - 1;
+        int mid = 0;
+        while (low <= high)
+        {
+            mid = (low + high) / 2;
+            if (userList.get(mid).getUsername().equalsIgnoreCase(username))
+            {
+                return true;
+            }
+            else
+            {
+                if (userList.get(mid).getUsername().compareToIgnoreCase(username) > 0)
+                {
+                    high = mid - 1;
+                }
+                else
+                {
+                    low = mid + 1;
+                }
+            }
+        }
+        return false;
     }
 
 }

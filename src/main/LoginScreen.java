@@ -20,56 +20,42 @@ public class LoginScreen
     private JCheckBox adminCheckBox;
     private ArrayList<RegUser> userList;
 
-    public LoginScreen(PanelHandler panels) throws Exception
+    public LoginScreen(PanelHandler panels)
     {
         this.handler = panels;
         this.backButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("startPanel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("startPanel");
             }
         });
         this.loginButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                if (!adminCheckBox.isSelected())
+                String enteredUsername = usernameField.getText();
+                String enteredPassword = "";
+                char[] enteredPasswordArray = passwordField.getPassword();
+                for (int i = 0; i < enteredPasswordArray.length; i++)
                 {
-                    try {
-                        handler.pushPanel("plan1Panel");
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
+                    enteredPassword = enteredPassword + enteredPasswordArray[i];
                 }
-
-                    // TODO: Sort "userList" alphabetically
-                    // TODO: Binary search for user object based on "username"
-                    // TODO: If user object is found, compare "password" with correct password. If match, move to planning sequence.
-                    // TODO: If no match, clear both fields and print error message.
-                    // TODO: If user object is not found, clear both fields and print error message.
-
+                FileManager files = new FileManager();
+                userList = files.readUserFiles();
+                if (!adminCheckBox.isSelected() && enteredPassword.equals(getUserPassword(enteredUsername)))
+                {
+                    handler.pushPanel("plan1Panel");
+                }
+                else if (adminCheckBox.isSelected() && enteredUsername.equals("admin") && enteredPassword.equals("password"))
+                {
+                    handler.pushPanel("adminPanel");
+                }
                 else
                 {
-                    String username = usernameField.getText();
-                    String password = "";
-                    char[] passwordArray = passwordField.getPassword();
-                    for (int i = 0; i < passwordArray.length; i++)
-                    {
-                        password = password + passwordArray[i];
-                    }
-                    if (username.equals("admin") && password.equals("password"))
-                    {
-                        try {
-                            handler.pushPanel("adminPanel");
-                        } catch (Exception e1) {
-                            e1.printStackTrace();
-                        }
-                    }
+                    usernameField.setText("");
+                    passwordField.setText("");
+                    adminCheckBox.setSelected(false);
                 }
             }
         });
@@ -78,6 +64,33 @@ public class LoginScreen
     public JPanel getMainPanel()
     {
         return this.mainPanel;
+    }
+
+    public String getUserPassword(String username)
+    {
+        int low = 0;
+        int high = userList.size() - 1;
+        int mid = 0;
+        while (low <= high)
+        {
+            mid = (low + high) / 2;
+            if (userList.get(mid).getUsername().equalsIgnoreCase(username))
+            {
+                return userList.get(mid).getPassword();
+            }
+            else
+            {
+                if (userList.get(mid).getUsername().compareToIgnoreCase(username) > 0)
+                {
+                    high = mid - 1;
+                }
+                else
+                {
+                    low = mid + 1;
+                }
+            }
+        }
+        return null;
     }
 
 }

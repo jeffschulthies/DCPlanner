@@ -35,18 +35,14 @@ public class CreateRestaurantScreen
     private JComboBox priceRange;
     private ArrayList<Restaurant> restaurantList;
 
-    public CreateRestaurantScreen(PanelHandler panels) throws Exception
+    public CreateRestaurantScreen(PanelHandler panels)
     {
         this.handler = panels;
         this.backButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("adminPanel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("adminPanel");
             }
         });
         this.addRestaurantButton.addActionListener(new ActionListener()
@@ -55,15 +51,8 @@ public class CreateRestaurantScreen
             {
                 if (!nameField.getText().isEmpty() && !addressField.getText().isEmpty() && !descriptionField.getText().isEmpty() && !longitudeField.getText().isEmpty() && !latitudeField.getText().isEmpty() && !typeField.getText().isEmpty())
                 {
-                    FileManager files = null;
-                    try {
-                        files = new FileManager();
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
-                    if (files != null) {
-                        restaurantList = files.readRestaurantFiles();
-                    }
+                    FileManager files = new FileManager();
+                    restaurantList = files.readRestaurantFiles();
                     String priceRangeString = (String)(priceRange.getSelectedItem());
                     int priceRangeInt = 0;
                     if (priceRangeString.equals("$"))
@@ -93,11 +82,7 @@ public class CreateRestaurantScreen
                         restaurantList.add(newRestaurant);
                     }
                     files.writeRestaurantFiles(restaurantList);
-                    try {
-                        handler.pushPanel("adminPanel");
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
+                    handler.pushPanel("adminPanel");
                 }
             }
         });
