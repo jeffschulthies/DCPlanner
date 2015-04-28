@@ -29,19 +29,15 @@ public class PlanScreen3
         this.potentialActivityList = file.readActivityFiles();
         for (int i = 0; i < this.potentialActivityList.size(); i++)
         {
-            boolean fitsUserPrefs = false;
+            boolean containsTags = false;
             for (int j = 0; j < this.potentialActivityList.get(i).getNumTags(); j++)
             {
                 if (compareTags(i, j))
                 {
-                    fitsUserPrefs = true;
+                    containsTags = true;
                 }
             }
-            if (this.currentItinerary.getFreeOnly() && this.potentialActivityList.get(i).getPrice() > 0)
-            {
-                fitsUserPrefs = false;
-            }
-            if (!fitsUserPrefs)
+            if (!containsTags)
             {
                 this.potentialActivityList.remove(i);
                 i--;

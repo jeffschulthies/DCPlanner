@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,18 +19,14 @@ public class LoginScreen
     private JCheckBox adminCheckBox;
     private ArrayList<RegUser> userList;
 
-    public LoginScreen(PanelHandler panels) throws Exception
+    public LoginScreen(PanelHandler panels)
     {
         this.handler = panels;
         this.backButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("startPanel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("startPanel");
             }
         });
         this.loginButton.addActionListener(new ActionListener()
@@ -47,12 +42,7 @@ public class LoginScreen
                     {
                         password = password + passwordArray[i];
                     }
-                    FileManager files = null;
-                    try {
-                        files = new FileManager();
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
+                    FileManager files = new FileManager();
                     userList = files.readUserFiles();
                     // TODO: Sort "userList" alphabetically
                     // TODO: Binary search for user object based on "username"
@@ -71,11 +61,7 @@ public class LoginScreen
                     }
                     if (username.equals("admin") && password.equals("password"))
                     {
-                        try {
-                            handler.pushPanel("adminPanel");
-                        } catch (Exception e1) {
-                            e1.printStackTrace();
-                        }
+                        handler.pushPanel("adminPanel");
                     }
                 }
             }

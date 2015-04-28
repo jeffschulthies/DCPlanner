@@ -28,11 +28,7 @@ public class RegisterScreen
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("startPanel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("startPanel");
             }
         });
         this.registerButton.addActionListener(new ActionListener()
@@ -55,14 +51,7 @@ public class RegisterScreen
                 {
                     verifyPassword = verifyPassword + verifyPasswordArray[i];
                 }
-
-                FileManager files = null;
-                try {
-                    files = new FileManager();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-
+                FileManager files = new FileManager();
                 userList = files.readUserFiles();
                 // TODO: Sort "userList" alphabetically
                 // TODO: Binary search for user object based on "username"

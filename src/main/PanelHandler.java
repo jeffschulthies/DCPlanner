@@ -17,7 +17,8 @@ public class PanelHandler
         this.mainFrame.setVisible(true);
     }
 
-    public void pushPanel(String panelName) throws Exception {
+    public void pushPanel(String panelName)
+    {
         this.mainFrame.getContentPane().removeAll();
         if (panelName.equals("startPanel"))
         {

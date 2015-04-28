@@ -1,9 +1,13 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import location.types.Activity;
 import location.types.Restaurant;
-import user.User;
 import user.types.RegUser;
 
 public class FileManager implements Serializable
@@ -13,18 +17,11 @@ public class FileManager implements Serializable
 	private String[] restaurantFileNames;
 	private String[] userFileNames;
 
-	public FileManager() {
+	public FileManager()
+	{
 		File activityDirectory = new File("data", "/activities/");
 		File restaurantDirectory = new File("data", "/restaurants/");
 		File userDirectory = new File("data", "/users/");
-		if(userDirectory.list().length == 0) {
-			User admin = new User("admin", 1, "password");
-			try {
-				writeUser(admin);
-			} catch(Exception e) {
-				System.out.println("Exception");
-			}
-		}
 		this.activityFileNames = activityDirectory.list();
 		this.restaurantFileNames = restaurantDirectory.list();
 		this.userFileNames = userDirectory.list();
@@ -156,18 +153,6 @@ public class FileManager implements Serializable
 				System.out.println("Exception: Unable to serialize and save file!");
 				return;
 			}
-		}
-	}
-
-	public void writeUser(User user) {
-		try {
-			FileOutputStream fileOutput = new FileOutputStream(new File("data", "/users/" + user.getUsername() + ".data"));
-			ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-			objectOutput.writeObject(user);
-			objectOutput.close();
-			fileOutput.close();
-		} catch(Exception e) {
-			System.out.println("Exception: Unable to serialize and save file!");
 		}
 	}
 

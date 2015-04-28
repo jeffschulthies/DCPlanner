@@ -18,40 +18,28 @@ public class AdminScreen
     private ArrayList<Activity> activityList;
     private ArrayList<Restaurant> restaurantList;
 
-    public AdminScreen(PanelHandler panels) throws Exception
+    public AdminScreen(PanelHandler panels)
     {
         this.handler = panels;
         this.testPlansButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("plan1Panel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("plan1Panel");
             }
         });
         this.createActivityButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("createActivityPanel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("createActivityPanel");
             }
         });
         this.createRestaurantButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("createRestaurantPanel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("createRestaurantPanel");
             }
         });
         this.printActivitiesButton.addActionListener(new ActionListener()

@@ -36,7 +36,7 @@ public class CreateActivityScreen
     private ArrayList<Activity> activityList;
 
 
-    public CreateActivityScreen(PanelHandler panels) throws Exception
+    public CreateActivityScreen(PanelHandler panels)
     {
         this.handler = panels;
         this.currentTags = new ArrayList<String>();
@@ -44,11 +44,7 @@ public class CreateActivityScreen
         {
             public void actionPerformed(ActionEvent e)
             {
-                try {
-                    handler.pushPanel("adminPanel");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+                handler.pushPanel("adminPanel");
             }
         });
         this.addTagButton.addActionListener(new ActionListener()
@@ -85,11 +81,7 @@ public class CreateActivityScreen
                         activityList.add(newActivity);
                     }
                     files.writeActivityFiles(activityList);
-                    try {
-                        handler.pushPanel("adminPanel");
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
+                    handler.pushPanel("adminPanel");
                 }
             }
         });
