@@ -15,13 +15,7 @@ public class PlanScreen3
     {
         this.handler = panels;
         this.currentItinerary = parentItinerary;
-        FileManager file = new FileManager();
-        this.potentialActivityList = file.readActivityFiles();
         this.parseActivities();
-        for (int i = 0; i < this.potentialActivityList.size(); i++)
-        {
-            System.out.println(this.potentialActivityList.get(i).getName());
-        }
     }
 
     public JPanel getMainPanel()
@@ -31,6 +25,8 @@ public class PlanScreen3
 
     public void parseActivities()
     {
+        FileManager file = new FileManager();
+        this.potentialActivityList = file.readActivityFiles();
         for (int i = 0; i < this.potentialActivityList.size(); i++)
         {
             boolean containsTags = false;
@@ -44,15 +40,16 @@ public class PlanScreen3
             if (!containsTags)
             {
                 this.potentialActivityList.remove(i);
+                i--;
             }
         }
     }
 
     public boolean compareTags(int activityIndex, int tagIndex)
     {
-        for (int k = 0; k < this.currentItinerary.getTripTags().size(); k++)
+        for (int i = 0; i < this.currentItinerary.getTripTags().size(); i++)
         {
-            if (this.potentialActivityList.get(activityIndex).getTag((tagIndex)).equals(this.currentItinerary.getTripTags().get(k)))
+            if (this.potentialActivityList.get(activityIndex).getTag(tagIndex).equals(this.currentItinerary.getTripTags().get(i)))
             {
                 return true;
             }
