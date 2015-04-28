@@ -5,7 +5,7 @@ import user.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RegUser extends User implements RegUserInterface, Serializable
+public class RegUser extends User implements Serializable
 {
 
 	private ArrayList<Itinerary> itineraries;
