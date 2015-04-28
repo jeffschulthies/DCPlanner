@@ -6,6 +6,7 @@ import itinerary.Itinerary;
 import itinerary.ItineraryIterator;
 import itinerary.Node;
 import location.types.Activity;
+import location.types.Restaurant;
 
 public class PlanScreen3
 {
@@ -24,6 +25,8 @@ public class PlanScreen3
     private JLabel priceLabel;
     private Itinerary currentItinerary;
     private ArrayList<Activity> potentialActivityList;
+    private ArrayList<Restaurant> potentialRestaurantList;
+    private boolean isRestaurant;
     private int currentTime;
     private int currentActivityIndex;
 
@@ -31,18 +34,31 @@ public class PlanScreen3
     {
         this.handler = panels;
         this.currentItinerary = parentItinerary;
+        this.isRestaurant = false;
         this.currentTime = this.currentItinerary.getTripStartTime();
         this.currentActivityIndex = 0;
         this.parseActivities();
+        this.parseRestaurants();
         this.setLabels();
         this.nextButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                if (currentActivityIndex != potentialActivityList.size() - 1)
+                if (isRestaurant)
                 {
-                    currentActivityIndex++;
-                    setLabels();
+                    if (currentActivityIndex != potentialRestaurantList.size() - 1)
+                    {
+                        currentActivityIndex++;
+                        setLabels();
+                    }
+                }
+                else
+                {
+                    if (currentActivityIndex != potentialActivityList.size() - 1)
+                    {
+                        currentActivityIndex++;
+                        setLabels();
+                    }
                 }
             }
         });
@@ -50,10 +66,21 @@ public class PlanScreen3
         {
             public void actionPerformed(ActionEvent e)
             {
-                if (currentActivityIndex != 0)
+                if (isRestaurant)
                 {
-                    currentActivityIndex--;
-                    setLabels();
+                    if (currentActivityIndex != potentialRestaurantList.size() - 1)
+                    {
+                        currentActivityIndex++;
+                        setLabels();
+                    }
+                }
+                else
+                {
+                    if (currentActivityIndex != 0)
+                    {
+                        currentActivityIndex--;
+                        setLabels();
+                    }
                 }
             }
         });
@@ -63,7 +90,14 @@ public class PlanScreen3
             {
                 if (currentTime == currentItinerary.getTripStartTime())
                 {
-                    currentItinerary.addFirst(potentialActivityList.get(currentActivityIndex), currentTime, currentTime + generateActivityLength());
+                    if (isRestaurant)
+                    {
+                        currentItinerary.addFirst(potentialRestaurantList.get(currentActivityIndex), currentTime, currentTime + generateActivityLength());
+                    }
+                    else
+                    {
+                        currentItinerary.addFirst(potentialActivityList.get(currentActivityIndex), currentTime, currentTime + generateActivityLength());
+                    }
                 }
                 else
                 {
@@ -72,7 +106,15 @@ public class PlanScreen3
                     {
                         iter.next();
                     }
-                    iter.add(potentialActivityList.get(currentActivityIndex), currentTime, currentTime + generateActivityLength());
+                    if (isRestaurant)
+                    {
+                        iter.add(potentialRestaurantList.get(currentActivityIndex), currentTime, currentTime + generateActivityLength());
+                        isRestaurant = false;
+                    }
+                    else
+                    {
+                        iter.add(potentialActivityList.get(currentActivityIndex), currentTime, currentTime + generateActivityLength());
+                    }
                 }
                 currentTime = currentTime + generateActivityLength();
                 if (currentTime >= currentItinerary.getTripEndTime())
@@ -81,7 +123,9 @@ public class PlanScreen3
                 }
                 else
                 {
+                    currentActivityIndex = 0;
                     parseActivities();
+                    parseRestaurants();
                     setLabels();
                 }
             }
@@ -95,27 +139,68 @@ public class PlanScreen3
 
     public void setLabels()
     {
-        this.insertNameLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getName());
-        this.insertAddressLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getAddress());
-        if (this.potentialActivityList.get(this.currentActivityIndex).getDescription().length() >= 150)
+        if (isRestaurant)
         {
-            String abridgedDescription = this.potentialActivityList.get(this.currentActivityIndex).getDescription().substring(0, 147) + "...";
-            this.insertDescriptionLabel.setText(abridgedDescription);
+            this.insertNameLabel.setText(this.potentialRestaurantList.get(this.currentActivityIndex).getName());
+            this.insertAddressLabel.setText(this.potentialRestaurantList.get(this.currentActivityIndex).getAddress());
+            if (this.potentialRestaurantList.get(this.currentActivityIndex).getDescription().length() >= 150)
+            {
+                String abridgedDescription = this.potentialRestaurantList.get(this.currentActivityIndex).getDescription().substring(0, 147) + "...";
+                this.insertDescriptionLabel.setText(abridgedDescription);
+            }
+            else
+            {
+                this.insertDescriptionLabel.setText(this.potentialRestaurantList.get(this.currentActivityIndex).getDescription());
+            }
+            int priceRangeValue = this.potentialRestaurantList.get(this.currentActivityIndex).getPriceRange();
+            String priceRangeSymbol = "";
+            switch (priceRangeValue)
+            {
+                case 1: priceRangeSymbol = "$$";
+                        break;
+                case 2: priceRangeSymbol = "$$$";
+                        break;
+                default: priceRangeSymbol = "$";
+                        break;
+            }
+            this.insertPriceLabel.setText(priceRangeSymbol);
         }
         else
         {
-            this.insertDescriptionLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getDescription());
+            this.insertNameLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getName());
+            this.insertAddressLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getAddress());
+            if (this.potentialActivityList.get(this.currentActivityIndex).getDescription().length() >= 150)
+            {
+                String abridgedDescription = this.potentialActivityList.get(this.currentActivityIndex).getDescription().substring(0, 147) + "...";
+                this.insertDescriptionLabel.setText(abridgedDescription);
+            }
+            else
+            {
+                this.insertDescriptionLabel.setText(this.potentialActivityList.get(this.currentActivityIndex).getDescription());
+            }
+            this.insertPriceLabel.setText(Double.toString(this.potentialActivityList.get(this.currentActivityIndex).getPrice()));
         }
-        this.insertPriceLabel.setText(Double.toString(this.potentialActivityList.get(this.currentActivityIndex).getPrice()));
     }
 
     public int generateActivityLength()
     {
-        if (this.currentItinerary.getTripEndTime() - this.currentTime < 200)
+        for (int i = 0; i < this.currentItinerary.getDiningTimes().length; i++)
+        {
+            if (this.currentItinerary.getDiningTimes()[i] == this.currentTime && this.currentItinerary.getDiningTimes()[i] != -1)
+            {
+                return 100;
+            }
+            else if (this.currentItinerary.getDiningTimes()[i] - this.currentTime <= 200 && this.currentItinerary.getDiningTimes()[i] - this.currentTime >= 0 && this.currentItinerary.getDiningTimes()[i] != -1)
+            {
+                this.isRestaurant = true;
+                return this.currentItinerary.getDiningTimes()[i] - this.currentTime;
+            }
+        }
+        if (this.currentItinerary.getTripEndTime() - this.currentTime <= 200)
         {
             return this.currentItinerary.getTripEndTime() - this.currentTime;
         }
-        else if (this.currentItinerary.getTripEndTime() - this.currentTime > 400)
+        else if (this.currentItinerary.getTripEndTime() - this.currentTime >= 400)
         {
             return 200;
         }
@@ -147,6 +232,20 @@ public class PlanScreen3
             if (!fitsUserPrefs)
             {
                 this.potentialActivityList.remove(i);
+                i--;
+            }
+        }
+    }
+
+    public void parseRestaurants()
+    {
+        FileManager file = new FileManager();
+        this.potentialRestaurantList = file.readRestaurantFiles();
+        for (int i = 0; i < this.potentialRestaurantList.size(); i++)
+        {
+            if ((this.currentTime < this.potentialRestaurantList.get(i).getOpenHour() || this.currentTime > this.potentialRestaurantList.get(i).getCloseHour()) && (this.potentialRestaurantList.get(i).getOpenHour() != -1 && this.potentialRestaurantList.get(i).getCloseHour() != -1))
+            {
+                this.potentialRestaurantList.remove(i);
                 i--;
             }
         }

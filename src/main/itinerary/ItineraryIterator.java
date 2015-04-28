@@ -16,7 +16,7 @@ public class ItineraryIterator implements Serializable
 		this.parent = parent;
 	}
 
-	public Location next()
+	public Node next()
 	{
 		if (!this.hasNext())
 		{
@@ -32,7 +32,7 @@ public class ItineraryIterator implements Serializable
 		{
 			this.current = this.current.getNext();
 		}
-		return this.current.getData();
+		return this.current;
 	}
 
 	public boolean hasNext()
