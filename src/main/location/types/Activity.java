@@ -23,19 +23,14 @@ public class Activity extends Location implements Serializable
 		this.price = price;
 	}
 
-	public String getTag(int index)
+	public ArrayList<String> getTags()
 	{
-		return this.tags.get(index);
+		return this.tags;
 	}
-	
+
 	public void addTag(String tag)
 	{
 		this.tags.add(tag);
-	}
-	
-	public int getNumTags()
-	{
-		return this.tags.size();
 	}
 	
 	public double getPrice()

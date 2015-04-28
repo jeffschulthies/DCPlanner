@@ -59,9 +59,9 @@ public class AdminScreen
                     System.out.println("\tOpen: " + activityList.get(i).getOpenHour());
                     System.out.println("\tClose: " + activityList.get(i).getCloseHour());
                     System.out.println("\tTags: ");
-                    for (int j = 0; j < activityList.get(i).getNumTags(); j++)
+                    for (int j = 0; j < activityList.get(i).getTags().size(); j++)
                     {
-                        System.out.println("\t\t" + activityList.get(i).getTag(j));
+                        System.out.println("\t\t" + activityList.get(i).getTags().get(j));
                     }
                     System.out.println("\tPrice: " + activityList.get(i).getPrice());
                     System.out.println();
