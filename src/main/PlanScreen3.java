@@ -23,6 +23,7 @@ public class PlanScreen3
     private JLabel insertPriceLabel;
     private JLabel descriptionLabel;
     private JLabel priceLabel;
+    private JLabel currentTimeLabel;
     private Itinerary currentItinerary;
     private ArrayList<Activity> potentialActivityList;
     private ArrayList<Restaurant> potentialRestaurantList;
@@ -180,6 +181,42 @@ public class PlanScreen3
             }
             this.insertPriceLabel.setText(Double.toString(this.potentialActivityList.get(this.currentActivityIndex).getPrice()));
         }
+        String timePeriod = "";
+        int twelveHourInt = currentTime;
+        if (twelveHourInt > 1200)
+        {
+            timePeriod = "PM";
+            twelveHourInt = twelveHourInt - 1200;
+        }
+        else
+        {
+            timePeriod = "AM";
+        }
+        String twelveHourString = Integer.toString(twelveHourInt);
+        String newTwelveHourString = "";
+        if (twelveHourString.length() == 3)
+        {
+            for (int i = 0; i < twelveHourString.length(); i++)
+            {
+                if (i == 1)
+                {
+                    newTwelveHourString = newTwelveHourString + ":";
+                }
+                newTwelveHourString = newTwelveHourString + twelveHourString.charAt(i);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < twelveHourString.length(); i++)
+            {
+                if (i == 2)
+                {
+                    newTwelveHourString = newTwelveHourString + ":";
+                }
+                newTwelveHourString = newTwelveHourString + twelveHourString.charAt(i);
+            }
+        }
+        this.currentTimeLabel.setText("Current Time: " + newTwelveHourString + " " + timePeriod);
     }
 
     public int generateActivityLength()
